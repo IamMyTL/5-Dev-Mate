@@ -9,6 +9,7 @@
 ========================================================
 ## INTERFACE ADMINISTRATION
 ========================================================
+
 Stories relatives à l'interface d'administration, accessible pour les Administrateurs.
 
 ### Un Administateur souhaite
@@ -26,6 +27,7 @@ Un Administrateur aura la possibilité de modifier ou de supprimer un utilisateu
 ========================================================
 ## INTERFACE UTILISATEUR
 ========================================================
+
 Stories relatives à l'interface utilisateur, accessible pour les visiteurs et les membres inscrits
 
 
