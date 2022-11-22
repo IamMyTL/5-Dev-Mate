@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -38,8 +40,8 @@
 
                             <div class="col-md-6">
                                 <select id="role" type="text" class="form-control" name="role" required autocomplete="role">
+                                <option id="candidate" name="candidate">{{ __('Candidat') }}</option>
                                     <option id="employee" name="employee">{{ __('Recruteur') }}</option>
-                                    <option id="candidate" name="candidate">{{ __('Candidat') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -57,8 +59,8 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="row mb-3">
+                        
+                        <div class="row mb-3" id="skillschecks">
                             <label class="col-md-4 col-form-label text-md-end">{{ __('Compétences') }}</label>                
                             <div class="form-check" style="text-align:center">
                                 <div>

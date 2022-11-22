@@ -67,6 +67,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
@@ -77,14 +78,17 @@ class RegisterController extends Controller
         ]);
 
         $id = $user->id;
-        
-        foreach($data['skills'] as $skill)
+        if(isset($data['skills']) && $data['role'] == "Candidat")
         {
-            $userskill = UserSkill::create([
-                'user_id' => $id,
-                'skill_id' => $skill,
-            ]);
+            foreach($data['skills'] as $skill)
+            {
+                $userskill = UserSkill::create([
+                    'user_id' => $id,
+                    'skill_id' => $skill,
+                ]);
+            }
         }
+        
         return $user;
     }
 }
