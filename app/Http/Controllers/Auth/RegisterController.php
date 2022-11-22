@@ -85,5 +85,6 @@ class RegisterController extends Controller
                 'skill_id' => $skill,
             ]);
         }
+        return $user;
     }
 }
