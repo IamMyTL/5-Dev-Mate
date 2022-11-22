@@ -21,10 +21,21 @@ return new class extends Migration
 
         // Insérer des skills par défaut
         $data = [
-            ['name'=>'c#'],
-            ['name'=>'python'],
-            ['name'=>'php'],
-            ['name'=>'c++']
+            ['name'=>'PHP'],
+            ['name'=>'C++'],
+            ['name'=>'C#'],
+            ['name'=>'Java'],
+            ['name'=>'Python'],
+            ['name'=>'Laravel'],
+            ['name'=>'Spring'],
+            ['name'=>'UML'],
+            ['name'=>'Merise'],
+            ['name'=>'HTML'],
+            ['name'=>'CSS'],
+            ['name'=>'JavaScript'],
+            ['name'=>'Drupal'],
+            ['name'=>'Symfony'],
+            ['name'=>'WordPress']
         ];
         DB::table('skills')->insert($data);
     }
