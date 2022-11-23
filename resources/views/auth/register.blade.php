@@ -64,7 +64,7 @@
                                 <div>
                                     @foreach($lsskills as $skills)
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="skills[]" type="checkbox" value="1">
+                                            <input class="form-check-input" name="skills[]" type="checkbox" value="{{$skills['id']}}">
                                             <label class="form-check-label" >{{$skills['name']}}</label>
                                         </div>
                                     @endforeach
