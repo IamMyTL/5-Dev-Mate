@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -64,66 +62,12 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('Compétences') }}</label>                
                             <div class="form-check" style="text-align:center">
                                 <div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="1">
-                                        <label class="form-check-label" >PHP</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="2">
-                                        <label class="form-check-label" >C++</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="3">
-                                        <label class="form-check-label" >C#</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="4">
-                                        <label class="form-check-label" >Java</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="5">
-                                        <label class="form-check-label" >Python</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="6">
-                                        <label class="form-check-label" >Laravel</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="7">
-                                        <label class="form-check-label" >Spring</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="8">
-                                        <label class="form-check-label" >UML</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="9">
-                                        <label class="form-check-label" >Merise</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="10">
-                                        <label class="form-check-label" >HTML</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="11">
-                                        <label class="form-check-label" >CSS</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="12">
-                                        <label class="form-check-label" >JavaScript</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="13">
-                                        <label class="form-check-label" >Drupal</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="14">
-                                        <label class="form-check-label" >Symfony</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="skills[]" type="checkbox" value="15">
-                                        <label class="form-check-label" >WordPress</label>
-                                    </div>
+                                    @foreach($lskills as $skills)
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="skills[]" type="checkbox" value="1">
+                                            <label class="form-check-label" >{{$skills['name']}}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

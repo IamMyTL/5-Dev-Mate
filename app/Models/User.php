@@ -23,6 +23,7 @@ class User extends Authenticatable
         'role',
         'email',
         'password',
+        'admin',
     ];
 
     public function skills()
