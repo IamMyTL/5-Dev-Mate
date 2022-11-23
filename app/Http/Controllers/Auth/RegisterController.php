@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\UserSkill;
+use App\Models\Skill;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -91,5 +92,10 @@ class RegisterController extends Controller
         }
         
         return $user;
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('auth.register', ['lsskills' => Skill::All()]);
     }
 }
