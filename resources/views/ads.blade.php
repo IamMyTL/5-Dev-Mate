@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Accueil') }}</div>
+                <div class="card-header">Annonces de {{ $user->surname }} {{ $user->name }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __("Bienvenue sur Dev Mate !") }}
                     
+                    {{ __("Futures annonces à afficher") }}
                 </div>
             </div>
         </div>

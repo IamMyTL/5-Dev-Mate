@@ -27,7 +27,7 @@ return new class extends Migration
         });
 
         $data = [
-            ['name'=>'Admin','surname' =>'Admin','role'=>'Candidat','email'=>'admin@admin.admin','password'=>'$2y$10$10PDL3GfyiLTGxKqr0x.P.yb.NR0STEt9QVbfyfh4cluIiBjhrV8i','Admin'=>'1'],
+            ['name'=>'Admin','surname' =>'Admin','role'=>'Recruteur','email'=>'admin@admin.admin','password'=>'$2y$10$10PDL3GfyiLTGxKqr0x.P.yb.NR0STEt9QVbfyfh4cluIiBjhrV8i','Admin'=>'1'],
         ];
         DB::table('users')->insert($data);
     }

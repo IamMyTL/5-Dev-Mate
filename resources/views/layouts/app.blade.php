@@ -40,26 +40,72 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('Navigation') }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/') }}">
+                                        {{ __('Accueil') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ url('/market') }}">
+                                        {{ __('Place de marché') }}
+                                    </a>
+                                    
+                                    @if(Auth::user()->Admin == 1)
+                                        <a class="dropdown-item" href="{{ url('/admin') }}">
+                                            {{ __('Interface administrateur') }}
+                                        </a>
+                                    @endif
+                                    
+                                </div>
+
+
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
+                                
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ url('/profile') }}"
+                                        onclick="event.preventDefault();
+                                                    document.getElementById('profile-form').submit();">
+                                        {{ __('Profil') }}
+                                        </a>
+
+                                        <form id="profile-form" action="{{ url('/profile') }}" method="GET" class="d-none">
+                                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                        </form>
+
+                                    @if(Auth::user()->role == "Recruteur")
+                                        <a class="dropdown-item" href="{{ url('/ads') }}"
+                                        onclick="event.preventDefault();
+                                                    document.getElementById('ads-form').submit();">
+                                        {{ __('Mes annonces') }}
+                                        </a>
+
+                                        <form id="ads-form" action="{{ url('/ads') }}" method="GET" class="d-none">
+                                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                        </form>
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Déconnexion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

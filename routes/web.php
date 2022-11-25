@@ -13,13 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/test', [App\Http\Controllers\SkillController::class, 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
+Route::get('/ads', [App\Http\Controllers\AdsController::class, 'index']);
 
+Route::get('/market', [App\Http\Controllers\MarketController::class, 'index']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
+
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
