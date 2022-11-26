@@ -14,16 +14,31 @@ class AdsController extends Controller
 {
     public function index()
     {
-        return view('/ads',
+        return view('/ads/list',
         [
-            'user' => User::Find($_GET['id']),
-            'skills' => Skill::All(),
-            'users' => User::All(),
+            'user' => User::Find($_GET['publisher']),
             'ads' => Ad::Where('user_id', Auth::user()->id)->get(),
         ]);
     }
 
-    
+    public function create()
+    {
+        return view('ads/create',
+        [
+            'skills' => Skill::All(),
+        ]);
+    }
+
+    public function show()
+    {
+        return view('/ads/one',
+        [
+            'ad' => Ad::Find($_GET['ad']),
+            'skills' => AdSkill::Where('ad_id', $_GET['ad'])->get(),
+        ]);
+    }
+
+
     protected function store(Request $request)
     {
         //Pour insérer l'annonce dans la db, on intègre les données dans un tableau
@@ -49,6 +64,6 @@ class AdsController extends Controller
 
             $adskill->save();
         }
-        return redirect('/ads?id='.Auth::user()->id)->with('success', 'Annonce ajoutée avec succès!');
+        return redirect('/ads/list?publisher='.Auth::user()->id)->with('success', 'Annonce ajoutée avec succès!');
     }
 }

@@ -5,29 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Annonces de {{ $user->surname }} {{ $user->name }}</div>
+                <div class="card-header">Publication d'une annonce</div>
 
                 <div class="card-body">
-                    @if (\Session::has('success'))
-                        <div class="alert alert-success">
-                            <ul>
-                                <li>{!! \Session::get('success') !!}</li>
-                            </ul>
-                        </div>
-                    @endif
-                    @foreach($ads as $ad)
-                        <div class="card">
-                            <a href="/ads?id={{ $ad->id }}"">{{ $ad->title }} </a>
-                            {{ $ad->company }} <br>
-                            {{ $ad->description }} <br>
-                        </div>
-                    </a>
-                    @endforeach
-
-                    <form method="POST" action="{{ url('/ads') }}">
-                    <legend>Insérer une nouvelle annonce</legend>
+                    <form method="POST" action="{{ url('ads/store') }}">
                         @csrf
-                        
 
                         <div class="row mb-3">
                             <label for="description" class="col-md-4 col-form-label text-md-end">{{ __("Titre de l'annonce") }}</label>
@@ -78,7 +60,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __("Enregistrer l'annonce") }}
+                                    {{ __("Publier l'annonce") }}
                                 </button>
                             </div>
                         </div>

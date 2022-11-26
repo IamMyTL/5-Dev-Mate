@@ -91,14 +91,14 @@
                                         </form>
 
                                     @if(Auth::user()->role == "Recruteur")
-                                        <a class="dropdown-item" href="{{ url('/ads') }}"
+                                        <a class="dropdown-item" href="{{ url('/ads/list') }}"
                                         onclick="event.preventDefault();
                                                     document.getElementById('ads-form').submit();">
                                         {{ __('Mes annonces') }}
                                         </a>
 
-                                        <form id="ads-form" action="{{ url('/ads') }}" method="GET" class="d-none">
-                                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                                        <form id="ads-form" action="{{ url('/ads/list') }}" method="GET" class="d-none">
+                                            <input type="hidden" name="publisher" value="{{ Auth::user()->id }}">
                                         </form>
                                     @endif
 
