@@ -28,3 +28,6 @@ Route::get('/market', [App\Http\Controllers\MarketController::class, 'index']);
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+
+Route::post('/ads', [App\Http\Controllers\AdsController::class, 'store']);
+

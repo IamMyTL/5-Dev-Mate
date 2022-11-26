@@ -18,4 +18,9 @@ class Skill extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function ads()
+    {
+        return $this->belongsToMany(Ad::class);
+    }
 }

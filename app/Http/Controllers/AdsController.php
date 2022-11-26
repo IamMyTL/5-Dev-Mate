@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Ad;
 use App\Models\User;
+use App\Models\Skill;
+use App\Models\AdSkill;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 class AdsController extends Controller
 {
     public function index()
@@ -11,6 +17,38 @@ class AdsController extends Controller
         return view('/ads',
         [
             'user' => User::Find($_GET['id']),
+            'skills' => Skill::All(),
+            'users' => User::All(),
+            'ads' => Ad::Where('user_id', Auth::user()->id)->get(),
         ]);
+    }
+
+    
+    protected function store(Request $request)
+    {
+        //Pour insérer l'annonce dans la db, on intègre les données dans un tableau
+        $ad = new Ad(
+        [
+            'title' => $request->title,
+            'company' => $request->company,
+            'description' => $request->description,
+            'user_id' => Auth::user()->id,
+        ]);
+        
+        $ad->save();
+
+        $adid = $ad->id;
+
+        foreach($request->skills as $skill)
+        {
+            $adskill = new AdSkill(
+            [
+                'ad_id' => $adid,
+                'skill_id' => $skill,
+            ]);
+
+            $adskill->save();
+        }
+        return redirect('/ads?id='.Auth::user()->id)->with('success', 'Annonce ajoutée avec succès!');
     }
 }
