@@ -80,18 +80,10 @@
                                 </a>
                                 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/profile') }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('profile-form').submit();">
-                                        {{ __('Profil') }}
-                                        </a>
-
-                                        <form id="profile-form" action="{{ url('/profile') }}" method="GET" class="d-none">
-                                            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
-                                        </form>
+                                    <a class="dropdown-item" href="{{ url('/profiles/mine/'.Auth::user()->id) }}">Profil</a>
 
                                     @if(Auth::user()->role == "Recruteur")
-                                        <a class="dropdown-item" href="{{ url('/ads/list') }}"
+                                        <a class="dropdown-item" href="{{ url('/ads/list/'.Auth::user()->id) }}"
                                         onclick="event.preventDefault();
                                                     document.getElementById('ads-form').submit();">
                                         {{ __('Mes annonces') }}

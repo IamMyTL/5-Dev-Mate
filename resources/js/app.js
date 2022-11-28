@@ -38,11 +38,14 @@ import './bootstrap';
 
 //app.mount('#app');
 $(document).ready(function() {
+    if($("select#role").val() === "Recruteur"){
+        $("div#skillschecks").hide();
+    } 
     $("select#role").on("change", function() {
-        if($(this).val() === "Recruteur") {
-            $("div#skillschecks").hide();
-        } else {
+        if($(this).val() === "Candidat") {
             $("div#skillschecks").show();
+        } else {
+            $("div#skillschecks").hide();
         }
     });
 });

@@ -6,7 +6,6 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header"><b>{{ $ad->title }}</b></div>
-
                 <div class="card-body">
                     {{ $ad->description }}
                     <br>

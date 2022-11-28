@@ -17,7 +17,7 @@ class AdsController extends Controller
         return view('/ads/list',
         [
             'user' => User::Find($_GET['publisher']),
-            'ads' => Ad::Where('user_id', Auth::user()->id)->get(),
+            'ads' => Ad::Where('user_id', Auth::user()->id)->get()->reverse(),
         ]);
     }
 

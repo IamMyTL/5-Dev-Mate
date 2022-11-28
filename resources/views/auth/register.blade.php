@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Inscription') }}</div>
+            <div class="card" style="text-align: center">
+                <div class="card-header"><b>{{ __('Inscription') }}</b></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -38,7 +38,7 @@
 
                             <div class="col-md-6">
                                 <select id="role" type="text" class="form-control" name="role" required autocomplete="role">
-                                <option id="candidate" name="candidate">{{ __('Candidat') }}</option>
+                                    <option id="candidate" name="candidate">{{ __('Candidat') }}</option>
                                     <option id="employee" name="employee">{{ __('Recruteur') }}</option>
                                 </select>
                             </div>
@@ -95,8 +95,8 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div>
+                            <div style="text-align: center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Inscription') }}
                                 </button>

@@ -21,17 +21,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
+Route::get('/auth/passwords/edit', [App\Http\Controllers\PasswordController::class, 'edit']);
+Route::post('/auth/passwords/update', [App\Http\Controllers\PasswordController::class, 'update']);
 
 
 Route::get('/market', [App\Http\Controllers\MarketController::class, 'index']);
 
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index']);
-
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
-
 
 Route::get('/ads/list', [App\Http\Controllers\AdsController::class, 'index']);
 Route::get('/ads/one', [App\Http\Controllers\AdsController::class, 'show']);
 Route::get('ads/create', [App\Http\Controllers\AdsController::class, 'create']);
 Route::post('/ads/store', [App\Http\Controllers\AdsController::class, 'store']);
 
+Route::get('/profiles/mine/{id}', [App\Http\Controllers\ProfileController::class, 'mine']);
+Route::get('/profiles/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit']);
+Route::put('/profiles/update/{id}', [App\Http\Controllers\ProfileController::class, 'update']);
+Route::get('/profiles/delete/{id}', [App\Http\Controllers\ProfileController::class, 'delete']);
