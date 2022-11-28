@@ -62,7 +62,7 @@
                             <label class="col-md-4 col-form-label text-md-end">{{ __('Compétences') }}</label>                
                             <div class="form-check" style="text-align:center">
                                 <div>
-                                    @foreach($lsskills as $skills)
+                                    @foreach($skills as $skills)
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" name="skills[]" type="checkbox" value="{{$skills['id']}}">
                                             <label class="form-check-label" >{{$skills['name']}}</label>

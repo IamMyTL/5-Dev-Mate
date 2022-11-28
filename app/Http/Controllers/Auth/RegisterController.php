@@ -96,6 +96,6 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('auth.register', ['lsskills' => Skill::All()]);
+        return view('auth.register', ['skills' => Skill::All()]);
     }
 }

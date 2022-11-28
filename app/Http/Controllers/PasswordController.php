@@ -35,6 +35,6 @@ class PasswordController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return redirect('/profiles/mine/'.Auth::user()->id)->with("status", "Mot de passe modifié avec succès!");
+        return redirect('/profiles/one/'.Auth::user()->id)->with("status", "Mot de passe modifié avec succès!");
 }
 }

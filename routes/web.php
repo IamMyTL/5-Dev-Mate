@@ -34,7 +34,7 @@ Route::get('/ads/one', [App\Http\Controllers\AdsController::class, 'show']);
 Route::get('ads/create', [App\Http\Controllers\AdsController::class, 'create']);
 Route::post('/ads/store', [App\Http\Controllers\AdsController::class, 'store']);
 
-Route::get('/profiles/mine/{id}', [App\Http\Controllers\ProfileController::class, 'mine']);
+Route::get('/profiles/one/{id}', [App\Http\Controllers\ProfileController::class, 'show']);
 Route::get('/profiles/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit']);
 Route::put('/profiles/update/{id}', [App\Http\Controllers\ProfileController::class, 'update']);
 Route::get('/profiles/delete/{id}', [App\Http\Controllers\ProfileController::class, 'delete']);

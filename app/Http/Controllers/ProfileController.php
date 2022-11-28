@@ -9,25 +9,19 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function mine($id)
+
+    public function show($id)
     {
         $user = User::Find($id);
-        return view('/profiles/mine', compact('user'));
-    }
-
-    public function show()
-    {
-        return view('/profiles/one',
-        [
-            'user' => User::Find($_GET['user']),
-        ]);
+        return view('/profiles/one', compact('user'));
     }
 
     public function edit($id)
     {
-        $lsskills = Skill::All();
+        $checkedSkills = UserSkill::Where("user_id", $id)->pluck('skill_id')->toArray();
+        $skills = Skill::All();
         $user = User::Find($id);
-        return view('profiles/edit', compact('user', 'lsskills'));
+        return view('profiles/edit', compact('user', 'skills', 'checkedSkills'));
     }
 
     public function update(Request $request, $id)
@@ -38,27 +32,29 @@ class ProfileController extends Controller
         $user->role = $request->input('role');
         $user->update();
 
-        $checkedSkills = UserSkill::Where("user_id", $id);
+        $userSkillsInDB = UserSkill::Where("user_id", $id);
 
-        if($user->role == "Recruteur")
-        {
-            $checkedSkills->delete();
-        }
-        else
+        //Par défaut, on supprime toutes les relations de ce user avec les potentielles skills cochées dans la table intermédiaire
+        $userSkillsInDB->delete();
+        
+        //Si le rôle de l'utilisateur reste "Candidat" ou s'il le devient, on insère chaque relation de ce user avec les skills cochées
+        if($user->role == "Candidat")
         {
             foreach($request->skills as $skill)
             {
-                $userskill = new UserSkill(
-                    [
-                        'user_id' => $id,
-                        'skill_id' => $skill,
-                    ]);
+                    $userskill = new UserSkill(
+                        [
+                            'user_id' => $id,
+                            'skill_id' => $skill,
+                        ]);
                     
-                $userskill->save();
+                    $userskill->save();    
             }
         }
 
-        return redirect('/profiles/mine/'.$id)->with('status', 'Profil modifié avec succès!');
+            
+
+        return redirect('/profiles/one/'.$id)->with('status', 'Profil modifié avec succès!');
         
     }
 

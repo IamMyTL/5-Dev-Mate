@@ -80,7 +80,7 @@
                                 </a>
                                 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/profiles/mine/'.Auth::user()->id) }}">Profil</a>
+                                    <a class="dropdown-item" href="{{ url('/profiles/one/'.Auth::user()->id) }}">Profil</a>
 
                                     @if(Auth::user()->role == "Recruteur")
                                         <a class="dropdown-item" href="{{ url('/ads/list/'.Auth::user()->id) }}"
