@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,7 @@ Route::post('/auth/passwords/update', [App\Http\Controllers\PasswordController::
 
 Route::get('/market', [App\Http\Controllers\MarketController::class, 'index']);
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->middleware('admin');
 
 Route::get('/ads/list', [App\Http\Controllers\AdsController::class, 'index']);
 Route::get('/ads/one', [App\Http\Controllers\AdsController::class, 'show']);
