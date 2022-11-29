@@ -35,27 +35,26 @@ class ProfileController extends Controller
         $userSkillsInDB = UserSkill::Where("user_id", $id);
 
         //Par défaut, on supprime toutes les relations de ce user avec les potentielles skills cochées dans la table intermédiaire
-        $userSkillsInDB->delete();
-        
+
+
         //Si le rôle de l'utilisateur reste "Candidat" ou s'il le devient, on insère chaque relation de ce user avec les skills cochées
-        if($user->role == "Candidat")
-        {
-            foreach($request->skills as $skill)
-            {
-                    $userskill = new UserSkill(
-                        [
-                            'user_id' => $id,
-                            'skill_id' => $skill,
-                        ]);
-                    
-                    $userskill->save();    
+        if ($user->role == "Candidat") {
+            foreach ($request->skills as $skill) {
+                $userSkillsInDB->delete();
+                $userskill = new UserSkill(
+                    [
+                        'user_id' => $id,
+                        'skill_id' => $skill,
+                    ]
+                );
+
+                $userskill->save();
             }
         }
 
-            
 
-        return redirect('/profiles/one/'.$id)->with('status', 'Profil modifié avec succès!');
-        
+
+        return redirect('/profiles/one/' . $id)->with('status', 'Profil modifié avec succès!');
     }
 
     public function delete($id)
@@ -65,5 +64,4 @@ class ProfileController extends Controller
 
         return redirect('/')->with('status', 'Votre compte a bien été supprimé!');
     }
-
 }
