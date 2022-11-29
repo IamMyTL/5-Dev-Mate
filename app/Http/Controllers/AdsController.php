@@ -12,13 +12,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class AdsController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        return view('/ads/list',
-        [
-            'user' => User::Find($_GET['publisher']),
-            'ads' => Ad::Where('user_id', Auth::user()->id)->get()->reverse(),
-        ]);
+        $user = User::Find($id);
+        $ads = Ad::Where('user_id', Auth::user()->id)->get()->reverse();
+        return view('/ads/list', compact('user', 'ads'));
     }
 
     public function create()
@@ -29,14 +27,21 @@ class AdsController extends Controller
         ]);
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('/ads/one',
-        [
-            'ad' => Ad::Find($_GET['ad']),
-            'skills' => AdSkill::Where('ad_id', $_GET['ad'])->get(),
-        ]);
+        $ad = Ad::Find($id);
+        $skills = AdSkill::Where('ad_id', $id)->get();
+        return view('/ads/one', compact('ad', 'skills'));
     }
+
+    public function edit($id)
+    {
+        $checkedSkills = AdSkill::Where("ad_id", $id)->pluck('skill_id')->toArray();
+        $skills = Skill::All();
+        $ad = Ad::Find($id);
+        return view('ads/edit', compact('ad', 'skills', 'checkedSkills'));
+    }
+
 
 
     protected function store(Request $request)
@@ -64,6 +69,42 @@ class AdsController extends Controller
 
             $adskill->save();
         }
-        return redirect('/ads/list?publisher='.Auth::user()->id)->with('success', 'Annonce ajoutée avec succès!');
+        return redirect('/ads/list/'.Auth::user()->id)->with('success', 'Annonce ajoutée avec succès!');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $ad = Ad::Find($id);
+        $ad->title = $request->input('title');
+        $ad->company = $request->input('company');
+        $ad->description = $request->input('description');
+        $ad->update();
+
+        $adSkillsInDB = AdSkill::Where("ad_id", $id);
+
+        //Par défaut, on supprime toutes les relations de ce user avec les potentielles skills cochées dans la table intermédiaire
+
+        $adSkillsInDB->delete();
+            foreach ($request->skills as $skill) {
+                
+                $adskill = new AdSkill(
+                    [
+                        'ad_id' => $id,
+                        'skill_id' => $skill,
+                    ]
+                );
+
+                $adskill->save();
+            }
+        
+        return redirect('/ads/one/'.$id)->with('status', 'Annonce modifiée avec succès!');
+    }
+
+    public function delete($id)
+    {
+        $ad = Ad::Find($id);
+        $ad->delete();
+
+        return redirect('/')->with('status', 'Votre annonce a bien été supprimée!');
     }
 }

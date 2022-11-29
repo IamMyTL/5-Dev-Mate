@@ -16,11 +16,11 @@
                         </div>
                     @endif
                     @if( $user->id == Auth::user()->id )
-                        <a href="create">Publier une nouvelle annonce</a>
+                        <a href="/ads/create">Publier une nouvelle annonce</a>
                     @endif
                     @foreach($ads as $ad)
                         <div class="card">
-                            <a href="/ads/one?ad={{ $ad->id }}">{{ $ad->title }} </a>
+                            <a href="/ads/one/{{ $ad->id }}">{{ $ad->title }} </a>
                             {{ $ad->company }} <br>
                             {{ $ad->description }} <br>
                         </div>

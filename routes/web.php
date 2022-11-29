@@ -30,12 +30,17 @@ Route::get('/market', [App\Http\Controllers\MarketController::class, 'index']);
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->middleware('admin');
 
-Route::get('/ads/list', [App\Http\Controllers\AdsController::class, 'index']);
-Route::get('/ads/one', [App\Http\Controllers\AdsController::class, 'show']);
+Route::get('/ads/list/{id}', [App\Http\Controllers\AdsController::class, 'index']);
+Route::get('/ads/one/{id}', [App\Http\Controllers\AdsController::class, 'show']);
 Route::get('ads/create', [App\Http\Controllers\AdsController::class, 'create']);
 Route::post('/ads/store', [App\Http\Controllers\AdsController::class, 'store']);
+Route::put('/ads/update/{id}', [App\Http\Controllers\AdsController::class, 'update']);
+Route::get('/ads/edit/{id}', [App\Http\Controllers\AdsController::class, 'edit']);
+Route::get('/ads/delete/{id}', [App\Http\Controllers\AdsController::class, 'delete']);
+
 
 Route::get('/profiles/one/{id}', [App\Http\Controllers\ProfileController::class, 'show']);
 Route::get('/profiles/edit/{id}', [App\Http\Controllers\ProfileController::class, 'edit']);
 Route::put('/profiles/update/{id}', [App\Http\Controllers\ProfileController::class, 'update']);
 Route::get('/profiles/delete/{id}', [App\Http\Controllers\ProfileController::class, 'delete']);
+

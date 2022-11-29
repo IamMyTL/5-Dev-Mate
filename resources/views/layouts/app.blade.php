@@ -83,11 +83,7 @@
                                     <a class="dropdown-item" href="{{ url('/profiles/one/'.Auth::user()->id) }}">Profil</a>
 
                                     @if(Auth::user()->role == "Recruteur")
-                                        <a class="dropdown-item" href="{{ url('/ads/list/'.Auth::user()->id) }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('ads-form').submit();">
-                                        {{ __('Mes annonces') }}
-                                        </a>
+                                        <a class="dropdown-item" href="{{ url('/ads/list/'.Auth::user()->id) }}">Mes annonces</a>
 
                                         <form id="ads-form" action="{{ url('/ads/list') }}" method="GET" class="d-none">
                                             <input type="hidden" name="publisher" value="{{ Auth::user()->id }}">
