@@ -15,7 +15,7 @@ class AdsController extends Controller
     public function index($id)
     {
         $user = User::Find($id);
-        $ads = Ad::Where('user_id', Auth::user()->id)->get()->reverse();
+        $ads = Ad::Where('user_id', $user->id)->get()->reverse();
         return view('/ads/list', compact('user', 'ads'));
     }
 

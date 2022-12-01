@@ -62,6 +62,6 @@ class ProfileController extends Controller
         $user = User::Find($id);
         $user->delete();
 
-        return redirect('/')->with('status', 'Votre compte a bien été supprimé!');
+        return redirect('/')->with('status', 'Le compte a bien été supprimé!');
     }
 }
