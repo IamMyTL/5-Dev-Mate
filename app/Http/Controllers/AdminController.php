@@ -28,6 +28,12 @@ class AdminController extends Controller
     public function ads()
     {
         $ads = Ad::all();
+        foreach($ads as $ad){
+            $getuser = User::Where('id', $ad->user_id)->get()[0];
+            $ad->user_name = $getuser->name;
+            $ad->user_surname = $getuser->surname;
+        }
+
         return view('/admin/ads', compact('ads'));
     }
 }
