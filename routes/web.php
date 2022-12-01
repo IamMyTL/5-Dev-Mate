@@ -44,3 +44,6 @@ Route::get('/profiles/edit/{id}', [App\Http\Controllers\ProfileController::class
 Route::put('/profiles/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->middleware('auth');
 Route::get('/profiles/delete/{id}', [App\Http\Controllers\ProfileController::class, 'delete'])->middleware('auth');
 
+Route::any('{query}',
+    function() { return redirect('/home'); })
+    ->where('query', '.*');
