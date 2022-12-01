@@ -21,6 +21,12 @@
                     {{ $ad->description }}
                     <br>
                     <br>
+
+                    Compétences recherchées:
+                    <br>
+                    @foreach($ad->skills as $skill)
+                    {{$skill->name}}<br>
+                    @endforeach
                     Date et heure de publication: {{ $ad->created_at }}
                 </div>
             </div>
@@ -28,3 +34,4 @@
     </div>
 </div>
 @endsection
+

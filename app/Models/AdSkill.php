@@ -16,4 +16,6 @@ class AdSkill extends Model
         'skill_id',
     ];
 
+    protected $table = 'ad_skill';
+
 }
