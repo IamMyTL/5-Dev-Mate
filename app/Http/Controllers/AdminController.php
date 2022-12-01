@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Ad;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -22,5 +23,11 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         return view('/profiles/one', compact('user'));
+    }
+
+    public function ads()
+    {
+        $ads = Ad::all();
+        return view('/admin/ads', compact('ads'));
     }
 }
