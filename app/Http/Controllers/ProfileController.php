@@ -30,6 +30,9 @@ class ProfileController extends Controller
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->role = $request->input('role');
+        if($user->id != 1){
+            $user->Admin = $request->input('Admin') == "on" ? 1 : 0;
+        }
         $user->update();
 
         $userSkillsInDB = UserSkill::Where("user_id", $id);
@@ -65,6 +68,6 @@ class ProfileController extends Controller
         $user = User::Find($id);
         $user->delete();
 
-        return redirect('/')->with('status', 'Votre compte a bien été supprimé!');
+        return redirect('/')->with('status', 'Le compte a bien été supprimé!');
     }
 }

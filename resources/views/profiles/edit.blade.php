@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                @if($user->id == Auth::user()->id)
+                @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
                     <div class="card-header" style="text-align: center">
                         <b>{{ __('Modification du profil') }}</b>
                         <div style="text-align: center">
@@ -14,9 +14,20 @@
                     </div>
 
                     <div class="card-body">
-                        <form id="editProfile" method="POST" action="{{ url('profiles/update/'.Auth::user()->id) }}">
+                        <form id="editProfile" method="POST" action="{{ url('profiles/update/'.$user->id) }}">
                             @csrf
                             @method('PUT')
+                            
+                            @if(Auth::user()->Admin == 1)
+                            <div class="row mb-3">              
+                                <div class="form-check">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="Admin" type="checkbox" @if($user->Admin == 1) checked @endif @if($user->id == 1) disabled @endif>
+                                        <label class="form-check-label" >Administrateur</label>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
 
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nom') }}</label>

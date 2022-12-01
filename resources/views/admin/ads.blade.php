@@ -13,8 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-                    <a href="{{ url('/admin/profiles/') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Profiles</a>
+                    @foreach($ads as $ad)
+                        <div class="card">
+                            <a href="/ads/one/{{ $ad->id }}">{{ $ad->title }} </a>
+                            {{ $ad->company }} <br>
+                            {{ $ad->description }} <br>
+                        </div>
+                    </a>
+                    @endforeach
                 </div>
             </div>
         </div>
