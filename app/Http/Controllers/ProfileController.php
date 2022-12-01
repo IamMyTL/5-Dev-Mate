@@ -39,6 +39,7 @@ class ProfileController extends Controller
 
         //Si le rôle de l'utilisateur reste "Candidat" ou s'il le devient, on insère chaque relation de ce user avec les skills cochées
         if ($user->role == "Candidat") {
+            $userSkillsInDB->delete();
             foreach ($request->skills as $skill) {
                 $userskill = new UserSkill(
                     [
