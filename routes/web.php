@@ -44,3 +44,7 @@ Route::get('/profiles/edit/{id}', [App\Http\Controllers\ProfileController::class
 Route::put('/profiles/update/{id}', [App\Http\Controllers\ProfileController::class, 'update'])->middleware('auth');
 Route::get('/profiles/delete/{id}', [App\Http\Controllers\ProfileController::class, 'delete'])->middleware('auth');
 
+Route::get('storage/{file}', function ($file) {
+    $path = storage_path('app' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $file);
+    return response()->file($path);
+});

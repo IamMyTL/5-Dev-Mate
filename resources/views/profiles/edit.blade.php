@@ -14,9 +14,14 @@
                     </div>
 
                     <div class="card-body">
-                        <form id="editProfile" method="POST" action="{{ url('profiles/update/'.Auth::user()->id) }}">
+                        <form id="editProfile" method="POST" action="{{ url('profiles/update/'.Auth::user()->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+
+                            <div style="text-align:center;">
+                                <img src="{{url('storage/'.$user->image)}}" id="imgshow" style="width:120px; height:120px; text align:center;">
+                            </div>
+                            <br>
 
                             <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nom') }}</label>
@@ -37,6 +42,14 @@
 
                                 <div class="col-md-6">
                                     <input id="surname" type="text" class="form-control" name="surname" value="{{$user->surname}}" required autocomplete="surname">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image de profil') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="imgload" type="file" class="form-control" name="image" onchange="onFileSelected(event)">
                                 </div>
                             </div>
 

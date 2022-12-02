@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Skill;
 use App\Models\UserSkill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -26,18 +27,39 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
+        //dd($request->image);
         $user = User::Find($id);
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->role = $request->input('role');
+
+        if($request->image != NULL)
+        {
+            Storage::delete('images/'.$user->image);
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+            ]);
+            $imageName = time().'.'.$request->image->extension();
+            
+            $user->image = $imageName;
+            $request->image->storeAs('images', $imageName);
+        }
+        
+            
+            
+            
+            
+            
+        
+
         $user->update();
+
+        
 
         $userSkillsInDB = UserSkill::Where("user_id", $id);
 
-        //Par défaut, on supprime toutes les relations de ce user avec les potentielles skills cochées dans la table intermédiaire
 
 
-        //Si le rôle de l'utilisateur reste "Candidat" ou s'il le devient, on insère chaque relation de ce user avec les skills cochées
         if ($user->role == "Candidat") {
             $userSkillsInDB->delete();
 
@@ -64,6 +86,7 @@ class ProfileController extends Controller
     {
         $user = User::Find($id);
         $user->delete();
+        Storage::delete('images/'.$user->image);
 
         return redirect('/')->with('status', 'Votre compte a bien été supprimé!');
     }
