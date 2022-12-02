@@ -27,7 +27,16 @@
                     Role: {{$user->role}}<br>
                     Adresse mail: {{$user->email}}<br>
                     Date et heure d'inscription: {{$user->created_at}}<br>
-
+                    Compétences: <br>
+                    <ul class="list-group list-group-horizontal">
+                        @foreach($user->skills as $skill)
+                        @if(Auth::user()->Admin == 1)
+                            <li class="list-group-item"> <a href="{{ url('/admin/skill/profiles/'.$skill->id) }}" style="text-decoration:none;"> {{$skill->name}} </a></li>
+                            @else
+                                <li class="list-group-item">{{$skill->name}} <br></li>
+                            @endif
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

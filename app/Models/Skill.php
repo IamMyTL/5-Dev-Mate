@@ -16,11 +16,11 @@ class Skill extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_skills');
     }
 
     public function ads()
     {
-        return $this->belongsToMany(Ad::class);
+        return $this->belongsToMany(Ad::class, 'ad_skill');
     }
 }

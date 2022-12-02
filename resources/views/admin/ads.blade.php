@@ -15,7 +15,7 @@
                     @endif
                     @foreach($ads as $ad)
                         <div class="card">
-                            Utilisateur: <a href="/admin/profiles/{{$ad->user_id}}"> {{ $ad->user_name }} {{ $ad->user_surname }}</a>
+                            Utilisateur: <a href="/admin/profiles/{{$ad->user->id}}"> {{ $ad->user->name }} {{ $ad->user->surname }}</a>
                             Titre: <a href="/ads/one/{{ $ad->id }}">{{ $ad->title }} </a>
                             Societé:<br> {{ $ad->company }} <br>
                             Description:<br> {{ $ad->description }} <br>

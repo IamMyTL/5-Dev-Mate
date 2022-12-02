@@ -32,6 +32,7 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->mi
 Route::get('/admin/profiles', [App\Http\Controllers\AdminController::class, 'profiles'])->middleware('admin');
 Route::get('/admin/profiles/{id}', [App\Http\Controllers\AdminController::class, 'user'])->middleware('admin');
 Route::get('/admin/ads', [App\Http\Controllers\AdminController::class, 'ads'])->middleware('admin');
+Route::get('/admin/skill/profiles/{id}', [App\Http\Controllers\AdminController::class, 'usersfromskill'])->middleware('admin');
 
 
 Route::get('/ads/list/{id}', [App\Http\Controllers\AdsController::class, 'index'])->middleware('auth');

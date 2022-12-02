@@ -30,13 +30,7 @@ class AdsController extends Controller
     public function show($id)
     {
         $ad = Ad::Find($id);
-        $skills = Ad::Find($id)->skills()->orderBy('name')->get();
-        return view('/ads/one')->with(
-            [
-                'ad'=> $ad,
-                'skills'=> $skills
-            ]
-        );
+        return view('/ads/one', compact('ad'));
     }
 
     public function edit($id)
