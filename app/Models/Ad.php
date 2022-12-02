@@ -17,6 +17,11 @@ class Ad extends Model
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class);
+        return $this->belongsToMany(Skill::class, 'ad_skill');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
