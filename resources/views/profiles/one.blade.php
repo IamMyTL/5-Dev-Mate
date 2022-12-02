@@ -6,7 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <div style="text-align:center"><b>Profil de {{ $user->surname }} {{ $user->name }}</b></div>
+                    <div style="text-align:center"><b>{{ $user->surname }} {{ $user->name }}</b></div>
+                    <div style="text-align:center"><img style="width:120px; height:120px;" src="{{url('storage/'.$user->image)}}"></div>
                     @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
                         <div style="text-align:center">
                             <a href="{{ url('/profiles/edit/'.$user->id) }}" class="btn btn-primary btn-sm">Modifier le profil</a>

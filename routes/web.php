@@ -51,3 +51,8 @@ Route::get('/profiles/delete/{id}', [App\Http\Controllers\ProfileController::cla
 Route::any('{query}',
     function() { return redirect('/home'); })
     ->where('query', '.*');
+
+Route::get('storage/{file}', function ($file) {
+    $path = storage_path('app' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $file);
+    return response()->file($path);
+});

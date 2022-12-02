@@ -10,6 +10,7 @@ use App\Models\Skill;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -68,16 +69,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // La méthode create pour les users créée par défaut par Laravel prend un array en paramètre
+        // Or, pour pouvoir faire appel à des méthodes spécifiques concernant l'image de profil
+        // telles que la récupération de l'extension, je dois faire une variante objet de cet array
+        $request = new Request($data);
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+        ]);
         
+        $imageName = time().'.'.$request->image->extension();
+        //dd($imageName);
+
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'role' => $data['role'],
             'email' => $data['email'],
+            'image' => $imageName,
             'password' => Hash::make($data['password']),
             'admin' => '0',
-            
         ]);
+
+        $request->image->storeAs('images', $imageName);
+        
+        
+
+        
 
         $id = $user->id;
         if(isset($data['skills']) && $data['role'] == "Candidat")
