@@ -7,7 +7,13 @@
             <div class="card">
                 <div class="card-header">
                     <div style="text-align:center"><b>{{ $user->surname }} {{ $user->name }}</b></div>
-                    <div style="text-align:center"><img style="width:120px; height:120px;" src="{{url('storage/'.$user->image)}}"></div>
+                    <div style="text-align:center">
+                        @if($user->image != NULL)
+                            <img style="width:120px; height:120px; border-radius:50%; margin-bottom:5px;" src="{{url('storage/'.$user->image)}}">
+                        @else
+                            <img style="width:120px; height:120px; border-radius:50%; margin-bottom:5px;" src="{{url('images/default.png')}}">
+                        @endif
+                    </div>
                     @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
                         <div style="text-align:center">
                             <a href="{{ url('/profiles/edit/'.$user->id) }}" class="btn btn-primary btn-sm">Modifier le profil</a>

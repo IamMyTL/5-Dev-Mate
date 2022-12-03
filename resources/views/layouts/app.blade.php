@@ -51,7 +51,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-top:13px;" v-pre>
                                     {{ __('Navigation') }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -77,6 +77,11 @@
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
+                                    @if(Auth::user()->image != NULL)
+                                        <img style="width:50px; height:50px; border-radius:50%; margin-left:5px;" src="{{url('storage/'.Auth::user()->image)}}">
+                                    @else
+                                        <img style="width:50px; height:50px; border-radius:50%; margin-left:5px;" src="{{url('images/default.png')}}">
+                                    @endif
                                 </a>
                                 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

@@ -30,7 +30,11 @@
                             @endif
 
                             <div style="text-align:center;">
-                                <img src="{{url('storage/'.$user->image)}}" id="imgshow" style="width:120px; height:120px; text align:center;">
+                                @if($user->image != NULL)
+                                    <img src="{{url('storage/'.$user->image)}}" id="imgshow" style="width:120px; height:120px; border-radius:50%;">
+                                @else
+                                    <img src="{{url('images/default.png')}}" id="imgshow" style="width:120px; height:120px; border-radius:50%;">
+                                @endif
                             </div>
                             <br>
 

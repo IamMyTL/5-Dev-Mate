@@ -65,15 +65,13 @@
                         </div>
 
                         <div style="text-align:center;">
-                            <img id="imgshow" style="width:120px; height:120px; text align:center;">
+                            <img src="{{ url('/images/default.png') }}" id="imgshow" style="width:120px; height:120px; border-radius:50%; margin-bottom:10px;">
                         </div>
                         <div class="row mb-3">
                             <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image de profil') }}</label>
                             
-                            
-
                             <div class="col-md-6">
-                                <input id="imgload" type="file" class="form-control" name="image" value="{{ old('image') }}">
+                                <input id="imgload" type="file" class="form-control" name="image">
                             </div>
                         </div>
                         
