@@ -75,6 +75,14 @@
                             </div>
                         </div>
                         
+                        <div class="row mb-3">
+                            <label for="cv" class="col-md-4 col-form-label text-md-end">{{ __('CV (format PDF)') }}</label>
+                            
+                            <div class="col-md-6">
+                                <input id="cv" type="file" class="form-control" name="cv">
+                            </div>
+                        </div>
+
                         <div class="row mb-3" id="skillschecks">
                             <label class="col-md-4 col-form-label text-md-end">{{ __('Compétences') }}</label>                
                             <div class="form-check" style="text-align:center">

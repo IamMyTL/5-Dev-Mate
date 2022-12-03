@@ -49,6 +49,18 @@ class ProfileController extends Controller
             $request->image->storeAs('images', $imageName);
         }
 
+        if($request->cv != NULL)
+        {
+            Storage::delete('storage/cv'.$user->image);
+            $request->validate([
+                'cv' => 'required|mimes:pdf|max:1024',
+            ]);
+            $cvName = time().'.'.$request->cv->extension();
+            
+            $user->cv = $cvName;
+            $request->cv->storeAs('cvs', $cvName);
+        }
+
         $user->update();
 
         
@@ -84,7 +96,19 @@ class ProfileController extends Controller
         $user = User::Find($id);
         $user->delete();
         Storage::delete('images/'.$user->image);
+        Storage::delete('cvs/'.$user->cv);
 
         return redirect('/')->with('status', 'Le compte a bien été supprimé!');
     }
+
+    public function deleteCv($cv,$id)
+    {
+        $user = User::Find($id);
+        Storage::delete('cvs/'.$user->cv);
+        $user->cv = NULL;
+        $user->update();
+        return redirect('/profiles/one/'.$id)->with('status', 'CV supprimé avec succès!');
+
+    }
+
 }

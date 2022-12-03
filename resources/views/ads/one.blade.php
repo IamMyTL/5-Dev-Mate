@@ -5,10 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><b>{{ $ad->title }}</b></div>
-                <div style="text-align:center">
-                    <a href="{{ url('/ads/edit/'.$ad->id) }}" class="btn btn-primary btn-sm">Modifier l'annonce</a>
-                    <a href="{{ url('/ads/delete/'.$ad->id) }}" class="btn btn-primary btn-sm"  onclick="return confirm('En cliquant sur OK, votre annonce sera définitivement supprimée de la plateforme Dev Mate. Souhaitez-vous continuer?')">Supprimer l'annonce</a>
+                <div class="card-header" style="text-align: center;"><b>{{ $ad->title }}</b>
+                    <div style="text-align:center">
+                        <a href="{{ url('/ads/edit/'.$ad->id) }}" class="btn btn-primary btn-sm">Modifier l'annonce</a>
+                        <a href="{{ url('/ads/delete/'.$ad->id) }}" class="btn btn-primary btn-sm"  onclick="return confirm('En cliquant sur OK, votre annonce sera définitivement supprimée de la plateforme Dev Mate. Souhaitez-vous continuer?')">Supprimer l'annonce</a>
+                    </div>
                 </div>
                 <div class="card-body">
                     @if (\Session::has('status'))

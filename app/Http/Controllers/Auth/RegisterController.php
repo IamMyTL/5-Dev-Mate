@@ -78,10 +78,21 @@ class RegisterController extends Controller
             $request->validate([
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             ]);
-            
+
             $imageName = time().'.'.$request->image->extension();
             $request->image->storeAs('images', $imageName);
         }
+
+        if($request->cv != NULL)
+        {
+            $request->validate([
+                'cv' => 'required|mimes:pdf|max:1024',
+            ]);
+
+            $cvName = time().'.'.$request->cv->extension();
+            $request->cv->storeAs('cvs', $cvName);
+        }
+        
         
 
         $user = User::create([
@@ -90,18 +101,16 @@ class RegisterController extends Controller
             'role' => $data['role'],
             'email' => $data['email'],
             'image' => $request->image == NULL ? NULL : $imageName,
+            'cv' => $request->cv == NULL ? NULL : $cvName,
             'password' => Hash::make($data['password']),
             'admin' => '0',
         ]);
 
-    
-        
-        
-        
-
-        
-
         $id = $user->id;
+        
+        
+
+
         if(isset($data['skills']) && $data['role'] == "Candidat")
         {
             foreach($data['skills'] as $skill)

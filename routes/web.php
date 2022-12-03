@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 //Routes pour la redirection vers la page d'accueil
 Route::get('/', function () {
-    return view('home');
+    return view('/home');
 });
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/home', function () {
+    return view('/home');
+});
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
 //Routes pour la gestion de l'authentification
 Auth::routes();
@@ -62,6 +67,13 @@ Route::get('images/{file}', function ($file) {
     $path = storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $file);
     return response()->file($path);
 });
+
+Route::get('storage/cv/{file}', function ($file) {
+    $path = storage_path('app' . DIRECTORY_SEPARATOR . 'cvs' . DIRECTORY_SEPARATOR . $file);
+    return response()->file($path);
+});
+
+Route::get('deleteCv/{file}/{id}', [App\Http\Controllers\ProfileController::class, 'deleteCv']);
 
 
 //Route pour la gestion de l'URL

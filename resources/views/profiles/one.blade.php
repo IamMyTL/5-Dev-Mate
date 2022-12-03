@@ -31,19 +31,30 @@
                         </div>
                     @endif
 
-                    Role: {{$user->role}}<br>
+                    Rôle: {{$user->role}}<br>
                     Adresse mail: {{$user->email}}<br>
                     Date et heure d'inscription: {{$user->created_at}}<br>
                     Compétences: <br>
-                    <ul class="list-group list-group-horizontal">
-                        @foreach($user->skills as $skill)
-                        @if(Auth::user()->Admin == 1)
-                            <li class="list-group-item"> <a href="{{ url('/admin/skill/profiles/'.$skill->id) }}" style="text-decoration:none;"> {{$skill->name}} </a></li>
-                            @else
-                                <li class="list-group-item">{{$skill->name}} <br></li>
+                    <div style="text-align: center;">
+                        <ul class="list-group list-group-horizontal">
+                            @foreach($user->skills as $skill)
+                            @if(Auth::user()->Admin == 1)
+                                <li class="list-group-item"> <a href="{{ url('/admin/skill/profiles/'.$skill->id) }}" style="text-decoration:none;"> {{$skill->name}} </a></li>
+                                @else
+                                    <li class="list-group-item">{{$skill->name}} <br></li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                    @if($user->cv != NULL)
+                        <div style="text-align: center">
+                            <a href="{{ url('/storage/cv/'.$user->cv) }}" target="_new" class="btn btn-primary btn-sm">Consulter le CV</a>
+                            @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
+                                <a href="{{ url('deleteCv/'.$user->cv.'/'.$user->id) }}" class="btn btn-primary btn-sm" onclick="return confirm('Voulez-vous supprimer le CV de la plateforme?')">Supprimer mon CV</a>
                             @endif
-                        @endforeach
-                    </ul>
+                        </div>
+                        
+                    @endif
                 </div>
             </div>
         </div>
