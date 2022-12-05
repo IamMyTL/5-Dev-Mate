@@ -41,6 +41,13 @@ Route::get('/admin/profiles', [App\Http\Controllers\AdminController::class, 'pro
 Route::get('/admin/profiles/{id}', [App\Http\Controllers\AdminController::class, 'user'])->middleware('admin');
 Route::get('/admin/ads', [App\Http\Controllers\AdminController::class, 'ads'])->middleware('admin');
 Route::get('/admin/skill/profiles/{id}', [App\Http\Controllers\AdminController::class, 'usersfromskill'])->middleware('admin');
+Route::get('/admin/skills', [App\Http\Controllers\AdminController::class, 'skills'])->middleware('admin');
+Route::get('/admin/skill/delete/{id}', [App\Http\Controllers\AdminController::class, 'deleteskill'])->middleware('admin');
+Route::get('/admin/skill/create', [App\Http\Controllers\AdminController::class, 'addskill'])->middleware('admin');
+Route::post('/admin/skill/store', [App\Http\Controllers\AdminController::class, 'storeskill'])->middleware('admin');
+Route::get('/admin/skill/edit/{id}', [App\Http\Controllers\AdminController::class, 'editskill'])->middleware('admin');
+Route::put('/admin/skill/update/{id}', [App\Http\Controllers\AdminController::class, 'updateskill'])->middleware('admin');
+
 
 //Routes pour la gestion des annonces
 Route::get('/ads/list/{id}', [App\Http\Controllers\AdsController::class, 'index'])->middleware('auth');

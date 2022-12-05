@@ -14,7 +14,9 @@
                         </div>
                     @endif
                     
-                    <a href="{{ url('/admin/profiles/') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Profiles</a>
+                    <a href="{{ url('/admin/profiles/') }}" class="btn btn-primary active" role="button" aria-pressed="true">Profiles</a>
+                    <a href="{{ url('/admin/ads/') }}" class="btn btn-primary active" role="button" aria-pressed="true">Annonces</a>
+                    <a href="{{ url('/admin/skills/') }}" class="btn btn-primary active" role="button" aria-pressed="true">Compétences</a>
                 </div>
             </div>
         </div>

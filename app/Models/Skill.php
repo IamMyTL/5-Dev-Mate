@@ -14,6 +14,8 @@ class Skill extends Model
         'name',
     ];
 
+    public $timestamps = false;
+    
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_skills');
