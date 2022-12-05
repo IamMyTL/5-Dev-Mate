@@ -13,8 +13,22 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    
-                    {{ __("Futur contenu de la place de marché") }}
+                    @if(isset($sortedAds))
+                        @foreach($sortedAds as $sortedAd)
+                            @if($sortedAd->user_id != Auth::user()->id)
+                                <div class="card">
+                                    <a href="/ads/one/{{$sortedAd->id}}">{{$sortedAd->title}}</a>
+                                    Nombre de matches: {{count($sortedAd->skills)}}<br>
+                                    Compétences matchées:<br>
+                                    <ul class="list-group list-group-horizontal">
+                                        @foreach($sortedAd->skills as $skill)
+                                            <li class="list-group-item">{{$skill->name}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
         </div>
