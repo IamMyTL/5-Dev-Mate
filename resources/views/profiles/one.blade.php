@@ -14,6 +14,8 @@
                             <img style="width:120px; height:120px; border-radius:50%; margin-bottom:5px;" src="{{url('images/default.png')}}">
                         @endif
                     </div>
+                    <div style="text-align:center"><i>Adresse mail de contact: <b>{{ $user->email }}</b></i></div>
+
                     @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
                         <div style="text-align:center">
                             <a href="{{ url('/profiles/edit/'.$user->id) }}" class="btn btn-primary btn-sm">Modifier le profil</a>
@@ -22,7 +24,7 @@
                     @endif
                 </div>
 
-                <div class="card-body">
+                <div class="card-body" style="text-align: center;">
                     @if (\Session::has('status'))
                         <div class="alert alert-success">
                             <ul>
@@ -32,11 +34,9 @@
                     @endif
 
                     Rôle: {{$user->role}}<br>
-                    Adresse mail: {{$user->email}}<br>
-                    Date et heure d'inscription: {{$user->created_at}}<br>
                     Compétences: <br>
-                    <div style="text-align: center;">
-                        <ul class="list-group list-group-horizontal">
+                    <div>
+                        <ul class="list-group list-group-horizontal" style="display:flex; justify-content: space-around;">
                             @foreach($user->skills as $skill)
                             @if(Auth::user()->Admin == 1)
                                 <li class="list-group-item"> <a href="{{ url('/admin/skill/profiles/'.$skill->id) }}" style="text-decoration:none;"> {{$skill->name}} </a></li>
@@ -47,14 +47,16 @@
                         </ul>
                     </div>
                     @if($user->cv != NULL)
+                        <br>
                         <div style="text-align: center">
                             <a href="{{ url('/storage/cv/'.$user->cv) }}" target="_new" class="btn btn-primary btn-sm">Consulter le CV</a>
                             @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
-                                <a href="{{ url('deleteCv/'.$user->cv.'/'.$user->id) }}" class="btn btn-primary btn-sm" onclick="return confirm('Voulez-vous supprimer le CV de la plateforme?')">Supprimer mon CV</a>
+                                <a href="{{ url('deleteCv/'.$user->cv.'/'.$user->id) }}" class="btn btn-primary btn-sm" onclick="return confirm('Voulez-vous supprimer le CV de la plateforme?')">Supprimer le CV</a>
                             @endif
                         </div>
-                        
+                        <br>
                     @endif
+                    Date et heure d'inscription: {{$user->created_at}}
                 </div>
             </div>
         </div>

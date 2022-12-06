@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Interface administrateur') }}</div>
+                <div class="card-header">{{ __('Liste des annonces') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,10 +15,9 @@
                     @endif
                     @foreach($ads as $ad)
                         <div class="card">
-                            Utilisateur: <a href="/admin/profiles/{{$ad->user->id}}"> {{ $ad->user->name }} {{ $ad->user->surname }}</a>
-                            Titre: <a href="/ads/one/{{ $ad->id }}">{{ $ad->title }} </a>
-                            Societé:<br> {{ $ad->company }} <br>
-                            Description:<br> {{ $ad->description }} <br>
+                            <a href="/ads/one/{{ $ad->id }}">{{ $ad->title }}</a>
+                            <p>Societé: <b>{{ $ad->company }}</b>
+                            <br>Auteur: <a href="/admin/profiles/{{$ad->user->id}}"> {{ $ad->user->name }} {{ $ad->user->surname }}</a></p>
                         </div>
                     </a>
                     @endforeach
