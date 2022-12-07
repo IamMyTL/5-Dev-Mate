@@ -16,13 +16,35 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @foreach($users as $user)
-                        <div class="card">
-                            <a href="/admin/profiles/{{ $user->id }}">{{ $user->name }} {{ $user->surname }}</a>
-                        </div>
-                    </a>
-                    @endforeach
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prénom</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Admin</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)
+                                <tr>
+                                  
+                                    <td>  <a href="/admin/profiles/{{ $user->id }}">{{ $user->name }}</a></td>
+                                    <td>{{ $user->surname }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->role }}</td>
+                                    <td>
+                                        <input class="form-check-input" name="Admin" type="checkbox" @if($user->Admin == 1) checked @endif disabled>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                      </table>
                 </div>
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                {{ $users->links() }}
             </div>
         </div>
     </div>

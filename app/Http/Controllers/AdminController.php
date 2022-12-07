@@ -16,7 +16,7 @@ class AdminController extends Controller
 
     public function profiles()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return view('/admin/profiles', compact('users'));
     }
 
@@ -28,7 +28,7 @@ class AdminController extends Controller
 
     public function ads()
     {
-        $ads = Ad::with('user')->get();
+        $ads = Ad::with('user')->paginate(5);
         return view('/admin/ads', compact('ads'));
     }
 
@@ -41,7 +41,7 @@ class AdminController extends Controller
 
     public function skills()
     {
-        $skills = Skill::all();
+        $skills = Skill::paginate(10);
         return view('/admin/skills', compact('skills'));
     }
 
