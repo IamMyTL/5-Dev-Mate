@@ -23,6 +23,9 @@
                     </a>
                     @endforeach
                 </div>
+                <div class="d-flex justify-content-center mt-5">
+                    {{ $ads->links() }}
+                </div>
             </div>
         </div>
     </div>
