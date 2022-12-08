@@ -18,9 +18,9 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -29,12 +29,12 @@
                             <label for="surname" class="col-md-4 col-form-label text-md-end">{{ __('Prénom') }}</label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" >
+                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}">
 
                                 @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -57,9 +57,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -69,34 +69,34 @@
                         </div>
                         <div class="row mb-3">
                             <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image de profil') }}</label>
-                            
+
                             <div class="col-md-6">
                                 <input id="imgload" type="file" class="form-control" name="image">
                             </div>
                         </div>
-                        
+
                         <div class="row mb-3">
                             <label for="cv" class="col-md-4 col-form-label text-md-end">{{ __('CV (format PDF)') }}</label>
-                            
+
                             <div class="col-md-6">
                                 <input id="cv" type="file" class="form-control" name="cv">
                             </div>
                         </div>
 
                         <div class="row mb-3" id="skillschecks">
-                            <label class="col-md-4 col-form-label text-md-end">{{ __('Compétences') }}</label>                
+                            <label class="col-md-4 col-form-label text-md-end">{{ __('Compétences') }}</label>
                             <div class="form-check" style="text-align:center">
                                 <div>
                                     @foreach($skills as $skills)
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" name="skills[]" type="checkbox" value="{{$skills['id']}}">
-                                            <label class="form-check-label" >{{$skills['name']}}</label>
-                                        </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" name="skills[]" type="checkbox" value="{{$skills['id']}}">
+                                        <label class="form-check-label">{{$skills['name']}}</label>
+                                    </div>
                                     @endforeach
                                 </div>
                             </div>
                         </div>
-                        
+
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mot de passe') }}</label>
@@ -105,9 +105,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -122,6 +122,7 @@
 
                         <div>
                             <div style="text-align: center">
+                                <p>En cliquant sur <b>Inscription</b>, vous acceptez nos <b>Conditions générales</b>. Ainsi que notre <b>Politique de confidentialité</b>, par ailleurs vous acceptez aussi de partager votre <b>nom</b>, <b>prenom</b> et <b>Adresse mail</b> avec les autres utilisateurs.</p>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Inscription') }}
                                 </button>
