@@ -2,7 +2,6 @@
 
 - composer install
 - copy .env.example .env
-- créer une base de données
 
 
 # PARAMETRAGE DES VARIABLES D'ENVIRONNEMENT POUR LE RESET DU PASSWORD
@@ -22,8 +21,7 @@
 # INITIALISATION DE LA BASE DE DONNEES, DE LA CLE D'APPLICATION, DES COMPOSANTS ET DE L'HERBEGEMENT WEB
 
 - php artisan key:generate
-- php artisan migrate
+- php artisan migrate (la base de données n'existant pas, il faudra confirmer sa création)
 - npm install
 - npm run build
 - php artisan serve
-
