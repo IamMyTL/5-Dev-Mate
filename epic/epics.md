@@ -5,7 +5,7 @@ L'interface administrateur contiendra tout ce qu'il faut aux administrateurs pou
 <br>
 <br>
 
-# INERFACE UTILISATEUR
+# INTERFACE UTILISATEUR
 
 L'interface utilisateur octroiera aux utilisateurs de la plateforme la possibilité de naviguer de manière fluide grâce à une interface intuitive, leur permettant d'accéder à toutes les informations dont il a besoin.
 <br>
