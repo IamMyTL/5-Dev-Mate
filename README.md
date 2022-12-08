@@ -25,3 +25,8 @@
 - npm install
 - npm run build
 - php artisan serve
+
+# INFOS UTILISATEUR ADMIN
+
+Mail: 5devmate@gmail.com
+Password: DevAdmin
