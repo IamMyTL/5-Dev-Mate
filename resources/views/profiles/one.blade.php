@@ -36,7 +36,7 @@
                     Rôle: {{$user->role}}<br>
                     Compétences: <br>
                     <div>
-                        <ul class="list-group list-group-horizontal" style="display:flex; justify-content: space-around;">
+                        <ul class="list-group list-group-horizontal" style="display:flex; justify-content: center;">
                             @foreach($user->skills as $skill)
                             @if(Auth::user()->Admin == 1)
                                 <li class="list-group-item"> <a href="{{ url('/admin/skill/profiles/'.$skill->id) }}" style="text-decoration:none;"> {{$skill->name}} </a></li>

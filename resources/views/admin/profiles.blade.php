@@ -43,9 +43,11 @@
                       </table>
                 </div>
             </div>
-            <div class="d-flex justify-content-center mt-5">
-                {{ $users->links() }}
-            </div>
+            @if (!isset($skill))
+                <div class="d-flex justify-content-center mt-5">
+                    {{ $users->links() }}
+                </div>
+            @endif
         </div>
     </div>
 </div>
