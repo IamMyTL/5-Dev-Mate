@@ -1,4 +1,8 @@
-# LIER LA PLATEFORME A UNE BASE DE DONNEES #
+# LANGAGE DE PROGRAMMATION
+
+Pour mener à bien ce projet, nous utiliserons le langage PHP, couplé au framework Laravel. L'utilisation de ce framework nous permettrons d'implémenter facilement plusieurs features qui nous seront utile dans le cadre de ce développement, comme le système d'authentification ou les méthodes permettant d'interagir avec la base de données. La base de données d'ailleurs, parlons-en.
+
+# LIER LA PLATEFORME A UNE BASE DE DONNEES
 
 Pour ce faire, nous utiliserons dans le cadre de ce projet une base de données MySQL. En effet, tous les membres du groupe sont familiarisés avec les requêtes MySQL et il est multiplateforme, sachant que l'un des membres du groupe dispose d'un Mac et que tous parmi nous dispose dores et déjà d'un WampServer configuré et opérationnel pour héberger des bases de données MySQL, cela nous fait donc trois bonnes raisons de partir sur cette solution. Les quelques inconvénients de MySQL ne nous importent pas pour un projet de cette ampleur. Voici d'ailleurs le schéma de notre base de données.
 
@@ -20,8 +24,15 @@ Et cerise sur le gâteau: le framework Laravel dispose de méthodes effectuant l
 
 # AVOIR UNE INTERFACE ADMINISTRATEUR POUR PERMETTRE LA GESTION DES DONNEES DE LA PLATEFORME
 
+Grâce à des middlewares, nous pourrons gérer les accès à l'interface administrateur. Dans notre table users, il y aura un attribut booléen "Admin": si ce dernier est true, l'utilisateur est administrateur et a les accès relatifs à ce rôle. S'il est false, l'utilisateur n'est pas admninistrateur. Nous implémenterons aussi par défaut un profil superadmin lors de la migration de la base de données. Pour créer cette nuance, là où un administrateur aura la possibilité d'attribuer les accès admin via la page de modification d'un profil utilisateur grâce à une checkbox, la checkbox de la page de modification du profil du superadmin sera inaccessible et il ne sera pas possible de lui désoctroyer les accès administrateur.
 
+# PROPOSER UNE INTERFACE MODULABLE EN FONCTION DU PERIPHERIQUE UTILISE
 
+Pour ce faire, nous n'aurons pas à nous donner beaucoup de peine: l'implémentation des classes bootstrap permettant la mise en page sont par défaut responsive design.
+
+# PROPOSER UN3 GESTION DES ANNONCES POUR LES RECRUTEURS
+
+Via une page de
 
 - Lier la plateforme à une base de données,
 - Disposer d'une gestion d'utilisateurs, et donc un système d'inscription et de connexion afin de pouvoir spécifier le rôle et les compétences proposées/recherchées,
