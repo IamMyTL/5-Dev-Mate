@@ -29,7 +29,7 @@ return new class extends Migration
         });
 
         $data = [
-            ['name'=>'Admin','surname' =>'Admin','role'=>'Recruteur','email'=>'5devmate@gmail.com','password'=>'$2y$10$10PDL3GfyiLTGxKqr0x.P.yb.NR0STEt9QVbfyfh4cluIiBjhrV8i','Admin'=>'1'],
+            ['name'=>'Admin','surname' =>'Admin','role'=>'Recruteur','email'=>'5devmate@gmail.com','password'=>'$2y$10$exPjD4PvjO4E9UPIyCkhJeS13WXcGIXYz/sUlB8v86piVZHiNs4dW','Admin'=>'1'],
         ];
         DB::table('users')->insert($data);
     }
