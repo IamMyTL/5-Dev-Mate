@@ -6,9 +6,17 @@
         <div class="col-md-8">
             <div class="card">
                 @if(isset($skill))
-                    <div class="card-header">Liste des utilisateurs maîtrisant <b>{{ $skill->name }}</b></div>
+                    <div class="card-header" style="text-align: center">
+                        <div>Liste des utilisateurs maîtrisant <b>{{ $skill->name }}</b></div>
+                        <div><a href="{{url('/admin')}}">Retour à l'accueil de l'interface admin</a></div>
+                    </div>
+                    
                 @else
-                    <div class="card-header">Liste des utilisateurs</div>
+                    <div class="card-header" style="text-align: center">
+                        <div>Liste des utilisateurs</div>
+                        <div><a href="{{url('/admin')}}">Retour à l'accueil de l'interface admin</a></div>
+                    </div>
+                    
                 @endif
                 <div class="card-body">
                     @if (session('status'))

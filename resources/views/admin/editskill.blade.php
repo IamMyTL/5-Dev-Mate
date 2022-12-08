@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card" style="text-align: center">
-                <div class="card-header"><b>Compétence</b></div>
+                <div class="card-header">
+                    <div><b>Compétence</b></div>
+                    <div><a href="{{url('/admin')}}">Retour à l'accueil de l'interface admin</a></div>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ url('admin/skill/update/'.$skill->id) }}" enctype="multipart/form-data">

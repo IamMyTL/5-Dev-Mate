@@ -42,6 +42,12 @@
                         @endforeach
                     </ul>
                     Date et heure de publication: {{ $ad->created_at }}
+                    <br>
+                    @if($ad->user_id == Auth::user()->id)
+                        <div style="text-align: center">
+                            <a href="{{url('/ads/list/'.Auth::user()->id)}}">Retour à mes annonces</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

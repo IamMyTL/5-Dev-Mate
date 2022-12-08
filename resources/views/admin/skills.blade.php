@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Liste des compétences</div>
+                <div class="card-header" style="text-align: center">
+                    <div>Liste des compétences</div>
+                    <div><a href="{{url('/admin')}}">Retour à l'accueil de l'interface admin</a></div>
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
