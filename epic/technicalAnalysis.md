@@ -33,10 +33,3 @@ Pour ce faire, nous n'aurons pas à nous donner beaucoup de peine: l'implémenta
 # PROPOSER UN3 GESTION DES ANNONCES POUR LES RECRUTEURS
 
 Via une page "Mes annonces", accessible uniquement si l'utilisateur connecté est un recruteur et dans laquelle dans laquelle nous passerons l'id de l'utilisateur connecté en paramètre, il sera facilement possible de récupérer les annonces de l'utilisateur en question grâce à une requête SQL. En effet, comme le montre notre schéma de base de données plus haut dans ce fichier, la table ads contient un attribut user_id, qu'il nous suffira de cibler avec une requête where déjà implémentée dans le framework.
-
-- Lier la plateforme à une base de données,
-- Disposer d'une gestion d'utilisateurs, et donc un système d'inscription et de connexion afin de pouvoir spécifier le rôle et les compétences proposées/recherchées,
-- Mettre au point un système de matchmaking permettant de comparer les compétences proposées et recherchées,
-- Avoir une interface administrateur pour permettre la gestion des données de la plateforme,
-- Proposer une interface modulable en fonction du périphérique utilisé,
-- Proposer une gestion des annonces pour les recruteurs.
