@@ -14,7 +14,7 @@
                             <img style="width:120px; height:120px; border-radius:50%; margin-bottom:5px;" src="{{url('images/default.png')}}">
                         @endif
                     </div>
-                    <div style="text-align:center"><i>Adresse mail de contact: <b>{{ $user->email }}</b></i></div>
+                    <div style="text-align:center"><i>Adresse mail de contact: <a href="mailto:{{ $user->email }}email?subject=Prise de contact">{{ $user->email }}</a><b></b></i></div>
 
                     @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
                         <div style="text-align:center">
