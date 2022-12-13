@@ -9,7 +9,7 @@
                     <b>{{ $ad->title }}</b>
                     <br>
                     Auteur: <a href="/profiles/one/{{$ad->user->id}}">{{ $ad->user->surname}} {{ $ad->user->name }}</a>
-                    @if($ad->user_id == Auth::user()->id)
+                    @if($ad->user_id == Auth::user()->id || Auth::user()->Admin == 1)
                         <div style="text-align:center">
                             <a href="{{ url('/ads/edit/'.$ad->id) }}" class="btn btn-primary btn-sm">Modifier l'annonce</a>
                             <a href="{{ url('/ads/delete/'.$ad->id) }}" class="btn btn-primary btn-sm"  onclick="return confirm('En cliquant sur OK, votre annonce sera définitivement supprimée de la plateforme Dev Mate. Souhaitez-vous continuer?')">Supprimer l'annonce</a>

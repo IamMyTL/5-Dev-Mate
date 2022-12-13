@@ -17,10 +17,12 @@
                     <div style="text-align:center"><i>Adresse mail de contact: <a href="mailto:{{ $user->email }}?subject=Prise de contact">{{ $user->email }}</a><b></b></i></div>
 
                     @if($user->id == Auth::user()->id || Auth::user()->Admin == 1)
-                        <div style="text-align:center">
-                            <a href="{{ url('/profiles/edit/'.$user->id) }}" class="btn btn-primary btn-sm">Modifier le profil</a>
-                            <a class="btn btn-primary btn-sm" href="{{ url('/profiles/delete/'.$user->id) }}" onclick="return confirm('En cliquant sur OK, votre compte sera définitivement supprimé de la plateforme Dev Mate. Souhaitez-vous continuer?')">Supprimer le profil</a>
-                        </div>
+                        @if($user->id != 1)
+                            <div style="text-align:center">
+                                <a href="{{ url('/profiles/edit/'.$user->id) }}" class="btn btn-primary btn-sm">Modifier le profil</a>
+                                <a class="btn btn-primary btn-sm" href="{{ url('/profiles/delete/'.$user->id) }}" onclick="return confirm('En cliquant sur OK, votre compte sera définitivement supprimé de la plateforme Dev Mate. Souhaitez-vous continuer?')">Supprimer le profil</a>
+                            </div>
+                        @endif
                     @endif
                 </div>
 
