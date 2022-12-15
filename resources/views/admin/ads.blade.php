@@ -4,9 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Liste des annonces') }}</div>
-
+            <div class="card" style="text-align: center">
+                <div class="card-header">
+                    <div><b>Liste des annonces</b></div>
+                    <div><a href="{{url('/admin')}}">Retour à l'accueil de l'interface admin</a></div>
+                </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

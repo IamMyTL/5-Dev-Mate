@@ -38,6 +38,9 @@ class AdsController extends Controller
         $checkedSkills = AdSkill::Where("ad_id", $id)->pluck('skill_id')->toArray();
         $skills = Skill::All();
         $ad = Ad::Find($id);
+        if($ad->user_id != Auth::user()->id && Auth::user()->Admin == 0) {
+            return view('home');
+        }
         return view('ads/edit', compact('ad', 'skills', 'checkedSkills'));
     }
 
@@ -102,6 +105,9 @@ class AdsController extends Controller
     public function delete($id)
     {
         $ad = Ad::Find($id);
+        if($ad->user_id != Auth::user()->id && Auth::user()->Admin == 0) {
+            return view('home');
+        }
         $ad->delete();
 
         return redirect('/')->with('status', 'Votre annonce a bien été supprimée!');

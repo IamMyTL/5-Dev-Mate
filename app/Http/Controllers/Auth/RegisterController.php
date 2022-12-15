@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\UserSkill;
 use App\Models\Skill;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Models\UserSkill;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -55,7 +56,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'role' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'string', 'max:255', Rule::in(['Candidat', 'Recruteur'])],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -73,6 +74,7 @@ class RegisterController extends Controller
         // Or, pour pouvoir faire appel à des méthodes spécifiques concernant l'image de profil
         // telles que la récupération de l'extension, je dois faire une variante objet de cet array
         $request = new Request($data);
+        
         if($request->image != NULL)
         {
             $request->validate([

@@ -72,6 +72,12 @@
 
                             <div class="col-md-6">
                                 <input id="imgload" type="file" class="form-control" name="image">
+
+                                @error('imgload')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -80,6 +86,12 @@
 
                             <div class="col-md-6">
                                 <input id="cv" type="file" class="form-control" name="cv">
+
+                                @error('cv')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 

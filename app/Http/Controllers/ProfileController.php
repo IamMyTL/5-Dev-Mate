@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Skill;
 use App\Models\UserSkill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
@@ -22,6 +23,9 @@ class ProfileController extends Controller
         $checkedSkills = UserSkill::Where("user_id", $id)->pluck('skill_id')->toArray();
         $skills = Skill::All();
         $user = User::Find($id);
+        if($user != Auth::user() && Auth::user()->Admin == 0 || $user->id == 1){
+            return view('home');
+        }
         return view('profiles/edit', compact('user', 'skills', 'checkedSkills'));
     }
 
@@ -94,6 +98,9 @@ class ProfileController extends Controller
     public function delete($id)
     {
         $user = User::Find($id);
+        if($user != Auth::user() && Auth::user()->Admin == 0 || $user->id == 1){
+            return view ('home');
+        }
         $user->delete();
         Storage::delete('images/'.$user->image);
         Storage::delete('cvs/'.$user->cv);

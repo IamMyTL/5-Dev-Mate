@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Support\Facades\Auth;
 
 class MarketController extends Controller
@@ -51,7 +51,11 @@ class MarketController extends Controller
             $myAds = Ad::Where('user_id', Auth::user()->id)->get();
             if(isset($_GET) && !empty($_GET))
             {
-                $ad = Ad::Where('id',$_GET['id'])->get();
+                $ad = Ad::Where('id',Request::get('id'))->get();
+                if($ad[0]->user_id != Auth::user()->id)
+                {
+                    return view('home');
+                }
                 $adSkills = $ad[0]->skills->pluck('id')->toArray();
 
                 $matchedProfiles = User::whereHas(
