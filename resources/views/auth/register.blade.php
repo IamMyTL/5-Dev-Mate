@@ -102,7 +102,7 @@
                                     @foreach($skills as $skills)
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" name="skills[]" type="checkbox" value="{{$skills['id']}}">
-                                        <label class="form-check-label">{{$skills['name']}}</label>
+                                        <label class="form-check-label">{{$skills['name']}}</label>  
                                     </div>
                                     @endforeach
                                 </div>

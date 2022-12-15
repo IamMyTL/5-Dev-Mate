@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Skill;
 use App\Models\UserSkill;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,7 +32,12 @@ class ProfileController extends Controller
 
     public function update(Request $request, $id)
     {
-        //dd($request->image);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'role' => ['required', 'string', 'max:255', Rule::in(['Candidat', 'Recruteur'])],
+        ]);
+        
         $user = User::Find($id);
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');

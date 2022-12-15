@@ -53,12 +53,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255', Rule::in(['Candidat', 'Recruteur'])],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'skills' => $data['role'] == 'Candidat' ? ['required'] : [],
         ]);
     }
 

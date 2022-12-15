@@ -48,7 +48,12 @@ class AdsController extends Controller
 
     protected function store(Request $request)
     {
-        //Pour insérer l'annonce dans la db, on intègre les données dans un tableau
+        $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'company' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'max:750'],
+        ]);
+
         $ad = new Ad(
         [
             'title' => $request->title,
@@ -76,6 +81,12 @@ class AdsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'max:100'],
+            'company' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'max:750'],
+        ]);
+        
         $ad = Ad::Find($id);
         $ad->title = $request->input('title');
         $ad->company = $request->input('company');
